@@ -9,12 +9,11 @@ namespace MyContacts.Model
 {
     public class ContactInfo
     {
-        [AutoIncrement]
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string NameSurname { get; set; }
-        public string PhoneNumber { get; set; }
-
-        public string Email { get; set; }
+        public string NameSurname { get; set; } = string.Empty;
+        public string PhoneNumber { get; set; } = string.Empty; 
+        public string Email { get; set; } = string.Empty;
     }
+
 }

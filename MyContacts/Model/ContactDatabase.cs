@@ -9,11 +9,18 @@ namespace MyContacts.Model
 {
     public class ContactDatabase
     {
-   
 
+        private SQLiteAsyncConnection database;
         SQLiteAsyncConnection Database;
 
-       
+
+        public ContactDatabase()
+        {
+            var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Contacts.db3");
+            database = new SQLiteAsyncConnection(dbPath);
+
+            database.CreateTableAsync<ContactInfo>().Wait();
+        }
 
         private async Task Init()
         {
@@ -64,7 +71,13 @@ namespace MyContacts.Model
 
             await Database.DeleteAsync(contact);
         }
+
+        public async Task UpdateContact(ContactInfo contact)
+        {
+            await Database.UpdateAsync(contact);
+        }
+
     }
 
 
- }
+}

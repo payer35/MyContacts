@@ -36,6 +36,10 @@ namespace MyContacts.Model
         {
             return  await contactDatabase.GetContactByIdAsync(id);
         }
+        public async Task UpdateContact(ContactInfo contact)
+        {
+            await contactDatabase.UpdateContact(contact);
+        }
 
     }
 }
